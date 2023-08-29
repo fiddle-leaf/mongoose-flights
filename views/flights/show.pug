@@ -1,0 +1,6 @@
+extends ../default
+
+block content 
+ h2 Flight Breakdown
+ h3 #{flight.airline}, Flight##{flight.flightNo} @ #{flight.airport}
+ h4= `Departing ${flight.departs.toUTCString()}`

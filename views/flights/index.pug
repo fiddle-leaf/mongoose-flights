@@ -7,7 +7,8 @@ block content
         
         each flight, index in flights 
             article
-                div
+                div(key=index)
                     a(href=`/flights/${flight._id}`)
                         h2 #{flight.airline}##{flight.flightNo}
                     h3= `${flight.departs.toLocaleString()}`
+                    a(href=`/flights/${flight._id}`) Details
