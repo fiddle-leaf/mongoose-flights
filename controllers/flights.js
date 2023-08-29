@@ -23,9 +23,7 @@ router.get("/", (req, res) => {
 
   Flight.find({})
     .then((foundFlights) => {
-      foundFlights.filter((flight) => {
-        return flight.departs === null;
-      }).departs = newFlight.departs;
+      console.log(foundFlights);
 
       res.render("flights/index", {
         flights: foundFlights,
@@ -42,9 +40,8 @@ router.get("/new", (req, res) => {
 // DELETE
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
-  console.log(req.body);
 
-  Flight.deleteOne({ _id: id })
+  Flight.findOneAndDelete({ _id: id })
     .then((data) => res.redirect("/flights"))
     .catch((error) => res.status(400).json({ error }));
 });

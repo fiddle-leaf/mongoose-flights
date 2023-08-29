@@ -20,6 +20,16 @@ block content
                 input(
                     type="datetime-local", 
                     name="departs")
+            div 
+                label Select Airport 
+                select(name="airport")
+                    option Aiport Code
+                    option(value="AUS") AUS - Austin, TX
+                    option(value="DAL") DAL - Dallas, TX
+                    option(value="LAX") LAX - Los Angeles, CA
+                    option(value="SAN") SAN - San Francisco
+                    option(value="SEA") SEA - Seattle, Washington  
+
             div
                 button(type="submit") Enter Flight Details 
                 button(type="reset") Reset
