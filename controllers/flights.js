@@ -19,9 +19,14 @@ const router = express.Router();
 
 // INDEX
 router.get("/", (req, res) => {
+  const newFlight = new Flight();
+
   Flight.find({})
     .then((foundFlights) => {
-      console.log(foundFlights);
+      foundFlights.filter((flight) => {
+        return flight.departs === null;
+      }).departs = newFlight.departs;
+
       res.render("flights/index", {
         flights: foundFlights,
       });
@@ -31,9 +36,6 @@ router.get("/", (req, res) => {
 
 // NEW
 router.get("/new", (req, res) => {
-  const newFlight = new Flight();
-  console.log(newFlight);
-  console.log(newFlight.departs.toISOString());
   res.render("flights/new");
 });
 
