@@ -1,0 +1,13 @@
+extends ../default
+
+block content 
+    div 
+        a(href="/flights/new")
+            button Create a New Flight! 
+        
+        each flight, index in flights 
+            article
+                div
+                    a(href=`/flights/${flight._id}`)
+                        h2 #{flight.airline}##{flight.flightNo}
+                    h3= `${flight.departs.toLocaleString()}`

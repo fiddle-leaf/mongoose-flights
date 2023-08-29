@@ -1,0 +1,25 @@
+extends ../default
+
+block content
+    form(action="/flights" method="POST")
+        fieldset 
+            legend Create a New Flight
+            div
+                label Airline: 
+                input(
+                    type="text", 
+                    name="airline", 
+                    placeholder="Enter Airline name")
+            div 
+                label Flight Number: 
+                input(
+                    type="number", 
+                    name="flightNo")
+            div
+                label Departure Date and Time 
+                input(
+                    type="datetime-local", 
+                    name="departs")
+            div
+                button(type="submit") Enter Flight Details 
+                button(type="reset") Reset

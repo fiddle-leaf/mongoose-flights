@@ -21,6 +21,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   Flight.find({})
     .then((foundFlights) => {
+      console.log(foundFlights);
       res.render("flights/index", {
         flights: foundFlights,
       });
@@ -29,13 +30,17 @@ router.get("/", (req, res) => {
 });
 
 // NEW
-router.get("/:id", (req, res) => {
+router.get("/new", (req, res) => {
+  const newFlight = new Flight();
+  console.log(newFlight);
+  console.log(newFlight.departs.toISOString());
   res.render("flights/new");
 });
 
 // DELETE
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
+  console.log(req.body);
 
   Flight.deleteOne({ _id: id })
     .then((data) => res.redirect("/flights"))
@@ -77,7 +82,7 @@ router.get("/:id", (req, res) => {
 
   Flight.findOne({ _id: id })
     .then((foundFlight) => {
-      res.render("flight/show", {
+      res.render("flights/show", {
         flight: foundFlight,
       });
     })
