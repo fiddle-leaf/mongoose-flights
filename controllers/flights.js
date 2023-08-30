@@ -30,8 +30,11 @@ router.get("/", (req, res) => {
 
 // NEW
 router.get("/new", (req, res) => {
+  // in-memory flight to grab default date
   const newFlight = new Flight();
   const date = newFlight.departs;
+  // format string for default value in form
+  //yyyy-MM-ddThh:mm
   const departsDt = date.toISOString().slice(0, 16);
   console.log(departsDt);
 

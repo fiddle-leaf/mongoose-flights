@@ -1,14 +1,11 @@
 extends ../default
 
 block content 
-    div 
-        a(href="/flights/new")
-            button Create a New Flight! 
-        
-        each flight, index in flights 
-            article
-                div(key=index)
-                    a(href=`/flights/${flight._id}`)
-                        h2 #{flight.airline}##{flight.flightNo}
-                    h3= `${flight.departs.toLocaleString()}`
-                    a(href=`/flights/${flight._id}`) Details
+    h2 All Flights
+    each flight, index in flights 
+        article
+            div(key=index)
+                a(href=`/flights/${flight._id}`)
+                    h2 #{flight.airline}##{flight.flightNo}
+                h3= `${flight.departs.toLocaleString()}`
+                a(href=`/flights/${flight._id}`): button Details
