@@ -14,5 +14,6 @@ block content
             div(key=index)
                 a(href=`/flights/${flight._id}`)
                     h2 #{flight.airline}##{flight.flightNo}
-                h3= `Departure: ${flight.departs.toLocaleString()}`
+                h3(style=flight.departs < Date.now() ? "color: red" : false)
+                    = `Departure: ${flight.departs.toLocaleString()}`
                 a(href=`/flights/${flight._id}`): button Details
