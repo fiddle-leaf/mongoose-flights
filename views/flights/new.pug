@@ -3,7 +3,8 @@ extends ../default
 block content
     form(action="/flights" method="POST")
         fieldset 
-            legend Create a New Flight
+            legend 
+                h3 Create a New Flight
             div
                 label Airline: 
                 input(
@@ -19,7 +20,8 @@ block content
                 label Departure Date and Time 
                 input(
                     type="datetime-local", 
-                    name="departs")
+                    name="departs"
+                    value=departs)
             div 
                 label Select Airport 
                 select(name="airport")
