@@ -2,10 +2,17 @@ extends ../default
 
 block content 
     h2 All Flights
+    form(action="/flights" method="GET")
+        label Filter Flights: 
+        select(name="filter")
+            option(value="ascending") Ascending Order 
+            option(value="descending") Descending Order 
+        button(type="submit") Filter 
+
     each flight, index in flights 
         article
             div(key=index)
                 a(href=`/flights/${flight._id}`)
                     h2 #{flight.airline}##{flight.flightNo}
-                h3= `${flight.departs.toLocaleString()}`
+                h3= `Departure: ${flight.departs.toLocaleString()}`
                 a(href=`/flights/${flight._id}`): button Details

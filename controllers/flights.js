@@ -19,13 +19,35 @@ const router = express.Router();
 
 // INDEX
 router.get("/", (req, res) => {
-  Flight.find({})
-    .then((foundFlights) => {
-      res.render("flights/index", {
-        flights: foundFlights,
-      });
-    })
-    .catch((error) => res.status(400).json({ error }));
+  switch (req.query.filter) {
+    case "descending":
+      Flight.find()
+        .sort({ departs: -1 })
+        .then((desFlights) => {
+          console.log(desFlights);
+          res.render("flights/index", { flights: desFlights });
+        })
+        .catch((error) => res.status(400).json({ error }));
+      break;
+    case "ascending":
+      Flight.find()
+        .sort({ departs: 1 })
+        .then((desFlights) => {
+          console.log(desFlights);
+          res.render("flights/index", { flights: desFlights });
+        })
+        .catch((error) => res.status(400).json({ error }));
+      break;
+
+    default:
+      Flight.find({})
+        .then((foundFlights) => {
+          res.render("flights/index", {
+            flights: foundFlights,
+          });
+        })
+        .catch((error) => res.status(400).json({ error }));
+  }
 });
 
 // NEW
