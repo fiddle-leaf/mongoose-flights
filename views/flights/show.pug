@@ -5,3 +5,29 @@ block content
         h2 Flight Breakdown
         h3 #{flight.airline}, Flight##{flight.flightNo} @ #{flight.airport}
         h4= `Departing ${flight.departs.toUTCString()}`
+
+    article.destination
+        h2 Enter Destination
+        form(action=`/flights/${flight._id}?_method=PUT`, method="POST" )
+            div
+                label Select Airport
+                select(name="airport")
+                    option Aiport Code
+                    option(value="AUS") AUS - Austin, TX
+                    option(value="DAL") DAL - Dallas, TX
+                    option(value="LAX") LAX - Los Angeles, CA
+                    option(value="SAN") SAN - San Francisco
+                    option(value="SEA") SEA - Seattle, Washington   
+            div 
+                label(for="arrival") Arrival Date
+                input(type="datetime-local", name="arrival") 
+
+            div.buttons
+                button(type="submit") Enter Destination
+                button(type="reset") Reset
+        
+    article
+        h3 Destinations
+        ul
+            each item, key in flight.destinations 
+                li= `Airport: ${item.airport} @ ${item.arrival.toUTCString()}`

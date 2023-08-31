@@ -76,8 +76,8 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   const id = req.params.id;
 
-  Flight.updateOne({ _id: id }, req.body, { new: true })
-    .then((data) => res.redirect("/flights"))
+  Flight.updateOne({ _id: id }, { $push: { destinations: req.body } })
+    .then((data) => res.redirect(`/flights/${id}`))
     .catch((error) => res.status(400).json({ error }));
 });
 
@@ -107,6 +107,7 @@ router.get("/:id", (req, res) => {
 
   Flight.findOne({ _id: id })
     .then((foundFlight) => {
+      console.log(foundFlight);
       res.render("flights/show", {
         flight: foundFlight,
       });
