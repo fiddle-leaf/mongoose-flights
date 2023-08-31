@@ -1,37 +1,35 @@
 extends ../default
 
 block content
-    form(action="/flights" method="POST")
-        fieldset 
-            legend 
-                h3 Create a New Flight
-            div
-                label Airline: 
-                input(
-                    type="text", 
-                    name="airline", 
-                    placeholder="Enter Airline name")
-            div 
-                label Flight Number: 
-                input(
-                    type="number", 
-                    name="flightNo")
-            div
-                label Departure Date and Time 
-                input(
-                    type="datetime-local", 
-                    name="departs"
-                    value=departs)
-            div 
-                label Select Airport 
-                select(name="airport")
-                    option Aiport Code
-                    option(value="AUS") AUS - Austin, TX
-                    option(value="DAL") DAL - Dallas, TX
-                    option(value="LAX") LAX - Los Angeles, CA
-                    option(value="SAN") SAN - San Francisco
-                    option(value="SEA") SEA - Seattle, Washington  
+    form.new(action="/flights" method="POST")
+        h3 Create a New Flight
+        div
+            label Airline
+            input(
+                type="text", 
+                name="airline", 
+                placeholder="Enter Airline Name")
+        div 
+            label Flight Number
+            input(
+                type="number", 
+                name="flightNo")
+        div
+            label Departure Date and Time
+            input(
+                type="datetime-local", 
+                name="departs"
+                value=departs)
+        div 
+            label Select Airport
+            select(name="airport")
+                option Aiport Code
+                option(value="AUS") AUS - Austin, TX
+                option(value="DAL") DAL - Dallas, TX
+                option(value="LAX") LAX - Los Angeles, CA
+                option(value="SAN") SAN - San Francisco
+                option(value="SEA") SEA - Seattle, Washington  
 
-            div
-                button(type="submit") Enter Flight Details 
-                button(type="reset") Reset
+        div.buttons
+            button(type="submit") Enter Flight Details
+            button(type="reset") Reset

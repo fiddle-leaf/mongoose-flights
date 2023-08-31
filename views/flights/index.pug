@@ -1,16 +1,17 @@
 extends ../default
 
-block content 
-    h2 All Flights
-    form(action="/flights" method="GET")
-        label Filter Flights: 
-        select(name="filter")
-            option(value="ascending") Ascending Order 
-            option(value="descending") Descending Order 
-        button(type="submit") Filter 
-
-    each flight, index in flights 
-        article
+block content
+    aside.sidebar
+        h2 Sort Flights
+        form(action="/flights" method="GET")
+            label Filter Flights: 
+            select(name="filter")
+                option(value="ascending") Ascending Order 
+                option(value="descending") Descending Order 
+            button(type="submit") Filter 
+    article.flights
+        h2 All Flights
+        each flight, index in flights 
             div(key=index)
                 a(href=`/flights/${flight._id}`)
                     h2 #{flight.airline}##{flight.flightNo}
